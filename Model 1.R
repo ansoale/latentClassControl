@@ -104,26 +104,3 @@ plot(fit.LCC$resid ~ fit.LCC$fitted, col=W.hat, main="LCC model",
      ylab="Residual",xlab="Fitted values", font.main=1)
 abline(h=0, lty=2)
 plot(density(fit.LCC$resid), main="LCC residual density", font.main=1)
-
-
-
-#### PSM with imputed classes
-# dat2 <- data.frame(Z,X,Y,W.hat)
-# ps_match2 <- matchit(Z ~ X1 + X2 + X3 + X4 + X5 + W.hat, data=dat2)
-# match_dat2 <- match.data(ps_match2)
-# aug_match <- subset(match_dat2, select=-c(distance, weights,subclass))
-
-
-## Latent class control
-# z <- aug_match$Z
-# y <- aug_match$Y
-# w <- aug_match$W.hat
-# x <- as.matrix(subset(aug_match, select = -c(Z,Y,W.hat)))
-# names(x) <- colnames(X)
-# 
-# LCC <- est_LCC(z,x,y,w)
-# robust_results <- coeftest(LCC$model, vcov = vcovCL, type = "HC3", cluster = ~w)
-# stargazer::stargazer(fit.psm, robust_results,  type="text", single.row = FALSE,
-#   column.labels = c("Naive", "LCC (K=2)"))
-
-
