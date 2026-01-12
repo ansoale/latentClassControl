@@ -77,10 +77,6 @@ par(mfrow=c(1,1))
 plot(SLC$U ~ SLC$Xw)
 
 ## Latent class recovery
-hc <- rob_slink(cbind(SLC$U, SLC$Xw),k=20, alpha=0.9)
-plot(hc)
-W.hat <- cutree(hc, k=2, h=1.2)
-
 class_est <- est_latClass(cbind(SLC$U, SLC$Xw), linkage="ward.D", k=2)
 W.hat <- class_est$`2_class`
 
@@ -104,3 +100,4 @@ plot(fit.LCC$resid ~ fit.LCC$fitted, col=W.hat, main="LCC model",
      ylab="Residual",xlab="Fitted values", font.main=1)
 abline(h=0, lty=2)
 plot(density(fit.LCC$resid), main="LCC residual density", font.main=1)
+
